@@ -3,11 +3,15 @@ package com.example.crud_learning;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -57,6 +61,22 @@ public class ViewRecords extends AppCompatActivity {
                 arrayAdapter.notifyDataSetChanged();
                 lst1.invalidateViews();
             }
+            lst1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                    String item = titles.get(position).toString();
+
+                    Student student = studentArrayList.get(position);
+                    Intent intent = new Intent(getApplicationContext(), Edit.class);
+
+                    intent.putExtra("id", student.id);
+                    intent.putExtra("name", student.name);
+                    intent.putExtra("course", student.course);
+                    intent.putExtra("fee", student.fee);
+
+                    startActivity(intent);
+                }
+            });
     }
 }

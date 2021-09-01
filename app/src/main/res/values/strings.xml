@@ -5,4 +5,8 @@
     <string name="fee">Fee</string>
     <string name="name">Name</string>
     <string name="course">Course</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="id">ID</string>
+    <string name="back">Back</string>
 </resources>
