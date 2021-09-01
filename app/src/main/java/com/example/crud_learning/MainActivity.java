@@ -3,6 +3,7 @@ package com.example.crud_learning;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
@@ -34,6 +35,15 @@ public class MainActivity extends AppCompatActivity {
                 insert();
             }
         });
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), ViewRecords.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void insert(){
@@ -49,10 +59,17 @@ public class MainActivity extends AppCompatActivity {
             String sql = "insert into records(name, course, fee)values(?,?,?)";
             SQLiteStatement statement = db.compileStatement(sql);
             statement.bindString(1, name);
-            statement.bindString(1, course);
-            statement.bindString(1, fee);
+            statement.bindString(2, course);
+            statement.bindString(3, fee);
             statement.execute();
             Toast.makeText(this, "Records Added", Toast.LENGTH_LONG).show();
+
+            ed1.setText("");
+            ed2.setText("");
+            ed3.setText("");
+            ed1.requestFocus();
+
+
         }catch (Exception e){
             Toast.makeText(this, "Records Fail", Toast.LENGTH_LONG).show();
         }

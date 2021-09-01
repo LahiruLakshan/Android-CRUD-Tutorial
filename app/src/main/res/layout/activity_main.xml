@@ -7,6 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity"
+    android:background="@color/background"
     >
 
 <!--    topic-->
@@ -20,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Course Registation"
-            android:textColor="#D61515"
+            android:textColor="@color/headline"
             android:textSize="30dp"/>
 
 
@@ -35,14 +36,16 @@
         android:orientation="horizontal"
         >
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:text="@string/name"
+            android:textColor="@color/subtext"
             />
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/subtext"
             android:ems="10"
             android:id="@+id/name"
             android:textAlignment="center"/>
@@ -59,9 +62,10 @@
         android:orientation="horizontal"
         >
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="Course"
+            android:text="@string/course"
+            android:textColor="@color/subtext"
             />
         <EditText
             android:layout_width="wrap_content"
@@ -69,6 +73,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:id="@+id/course"
+            android:textColor="@color/subtext"
             android:textAlignment="center"/>
 
 
@@ -83,9 +88,10 @@
         android:orientation="horizontal"
         >
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="Fee"
+            android:text="@string/fee"
+            android:textColor="@color/subtext"
             />
         <EditText
             android:layout_width="wrap_content"
@@ -93,6 +99,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:id="@+id/fee"
+            android:textColor="@color/subtext"
             android:textAlignment="center"/>
 
 
@@ -105,22 +112,25 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
+
         >
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/bt1"
-            android:text="Ok"
-            android:background="#029104"
+            android:text="@string/ok"
+            android:background="@color/button"
+            android:layout_marginHorizontal="20dp"
             />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/bt2"
-            android:text="View"
-            android:background="#029104"
+            android:text="@string/view"
+            android:background="@color/button"
+            android:layout_marginHorizontal="20dp"
             />
 
 
