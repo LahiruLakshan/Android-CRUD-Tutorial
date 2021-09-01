@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class Edit extends AppCompatActivity {
 
     EditText ed1, ed2, ed3, ed4;
-    Button b1, b2;
+    Button b1, b2, b3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class Edit extends AppCompatActivity {
 
         b1 = findViewById(R.id.bt1);
         b2 = findViewById(R.id.bt2);
+        b3 = findViewById(R.id.bt3);
 
         Intent intent = getIntent();
 
@@ -52,6 +53,20 @@ public class Edit extends AppCompatActivity {
             }
         });
 
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                delete();
+            }
+        });
+
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ViewRecords.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -64,8 +79,7 @@ public class Edit extends AppCompatActivity {
             String fee = ed3.getText().toString();
             String id = ed4.getText().toString();
 
-            SQLiteDatabase db = openOrCreateDatabase("SliteDb", Context.MODE_PRIVATE, null);
-            db.execSQL("CREATE TABLE IF NOT EXISTS records(id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR,course VARCHAR,fee VARCHAR)");
+            SQLiteDatabase db = openOrCreateDatabase("database", Context.MODE_PRIVATE, null);
 
             String sql = "update records set name = ?, course = ? , fee = ? where id = ?";
             SQLiteStatement statement = db.compileStatement(sql);
@@ -75,6 +89,30 @@ public class Edit extends AppCompatActivity {
             statement.bindString(4, id);
             statement.execute();
             Toast.makeText(this, "Records Updated", Toast.LENGTH_LONG).show();
+
+            ed1.setText("");
+            ed2.setText("");
+            ed3.setText("");
+            ed1.requestFocus();
+
+
+        }catch (Exception e){
+            Toast.makeText(this, "Records Fail", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void delete(){
+
+        try {
+            String id = ed4.getText().toString();
+
+            SQLiteDatabase db = openOrCreateDatabase("database", Context.MODE_PRIVATE, null);
+
+            String sql = "delete from records where id = ?";
+            SQLiteStatement statement = db.compileStatement(sql);
+            statement.bindString(1, id);
+            statement.execute();
+            Toast.makeText(this, "Records Deleted", Toast.LENGTH_LONG).show();
 
             ed1.setText("");
             ed2.setText("");

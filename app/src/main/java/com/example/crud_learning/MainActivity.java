@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             String course = ed2.getText().toString();
             String fee = ed3.getText().toString();
 
-            SQLiteDatabase db = openOrCreateDatabase("SliteDb", Context.MODE_PRIVATE, null);
+            SQLiteDatabase db = openOrCreateDatabase("database", Context.MODE_PRIVATE, null);
             db.execSQL("CREATE TABLE IF NOT EXISTS records(id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR,course VARCHAR,fee VARCHAR)");
 
             String sql = "insert into records(name, course, fee)values(?,?,?)";

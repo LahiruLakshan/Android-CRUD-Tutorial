@@ -27,7 +27,7 @@ public class ViewRecords extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
 
-        SQLiteDatabase db = openOrCreateDatabase("SliteDb", Context.MODE_PRIVATE, null);
+        SQLiteDatabase db = openOrCreateDatabase("database", Context.MODE_PRIVATE, null);
 
             lst1 = findViewById(R.id.lst1);
             final Cursor c = db.rawQuery("select * from records", null);
